@@ -15,21 +15,22 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
- public class RegistrationFormApplication extends Application {
+ public class olshop extends Application {
      String name;
+     
      public String getName() {
-    return name;
+    return name;  
   }
-  // Setter
+     
   public void setName(String newName) {
     this.name = newName;
   }
   
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Registration Form JavaFX Application");
+        primaryStage.setTitle("");
 
-        GridPane gridPane = createRegistrationFormPane();
+        GridPane gridPane = createolshopPane();
         addUIControls(gridPane);
         Scene scene = new Scene(gridPane, 800, 500);	
         primaryStage.setScene(scene);
@@ -38,7 +39,7 @@ import javafx.stage.Window;
     }
 
 
-    private GridPane createRegistrationFormPane() {
+    private GridPane createolshopPane() {
         GridPane gridPane = new GridPane();
 
         gridPane.setAlignment(Pos.CENTER);
@@ -81,33 +82,33 @@ import javafx.stage.Window;
         nameField2.setPrefHeight(40);
         gridPane.add(nameField2, 1,2);
 
-        Label emailLabel = new Label("Jumlah Barang ");
-        gridPane.add(emailLabel, 0, 3);
+        Label nameLabel3 = new Label("Jumlah Barang ");
+        gridPane.add(nameLabel3, 0, 3);
 
-        TextField emailField = new TextField();
-        emailField.setPrefHeight(40);
-        gridPane.add(emailField, 1, 3);
+        TextField nameField3 = new TextField();
+        nameField3.setPrefHeight(40);
+        gridPane.add(nameField3, 1, 3);
         
-        Label noLabel = new Label("Harga Barang ");
-        gridPane.add(noLabel, 0, 4);
+        Label nameLabel4 = new Label("Harga Barang ");
+        gridPane.add(nameLabel4, 0, 4);
         
-        TextField noField = new TextField();
-        noField.setPrefHeight(40);
-        gridPane.add(noField, 1, 4);
+        TextField nameField4 = new TextField();
+        nameField4.setPrefHeight(40);
+        gridPane.add(nameField4, 1, 4);
 
-        Label passwordLabel = new Label("Metode Pembayaran ");
-        gridPane.add(passwordLabel, 0, 5);
+        Label nameLabel5 = new Label("Payment Method ");
+        gridPane.add(nameLabel5, 0, 5);
 
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPrefHeight(40);
-        gridPane.add(passwordField, 1, 5);
+        TextField nameField5 = new TextField();
+        nameField5.setPrefHeight(40);
+        gridPane.add(nameField5, 1, 5);
         
-        Label confirmLabel = new Label("Alamat Pembeli ");
-        gridPane.add(confirmLabel, 0, 6);
+        Label nameLabel6 = new Label("Alamat Pembeli ");
+        gridPane.add(nameLabel6, 0, 6);
         
-        PasswordField confirmField = new PasswordField();
-        confirmField.setPrefHeight(40);
-        gridPane.add(confirmField, 1, 6);
+        TextField nameField6 = new TextField();
+        nameField6.setPrefHeight(40);
+        gridPane.add(nameField6, 1, 6);
 
         Button submitButton = new Button("Beli");
         submitButton.setPrefHeight(40);
@@ -121,27 +122,27 @@ import javafx.stage.Window;
             @Override
             public void handle(ActionEvent event) {
                 if(nameField1.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter your processor");
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan kategori");
                     return;
                 }
                 if(nameField2.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter your motherboard");
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan nama barang");
                     return;
                 }
-                if(emailField.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter your RAM");
+                if(nameField3.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan jumlah barang");
                     return;
                 }
-                if(noField.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter your VGA");
+                if(nameField4.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan harga barang");
                     return;
                 }
-                if(passwordField.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter a hard disk");
+                if(nameField5.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan payment method");
                     return;
                 }
-                if(confirmField.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter a confirm Casing");
+                if(nameField6.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan alamat");
                     return;
                 }
                 showAlert(Alert.AlertType.CONFIRMATION, gridPane.getScene().getWindow(), "", "Apakah anda yakin?");
@@ -161,7 +162,7 @@ import javafx.stage.Window;
     }
     
      public static void main(String[] args) {
-         RegistrationFormApplication myObj = new RegistrationFormApplication();
+         olshop myObj = new olshop();
     myObj.name = "Program Sedang Berjalan...";
     System.out.println(myObj.name);
         launch(args);
