@@ -1,6 +1,7 @@
-package javafxapplication3;
+package uap;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -15,7 +16,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
- public class RegistrationFormApplication extends Application {
+ public class UAP extends Application {
      String name;
      public String getName() {
     return name;
@@ -61,48 +62,52 @@ import javafx.stage.Window;
     }
 
     private void addUIControls(GridPane gridPane) {
-        Label headerLabel = new Label("Rakit PC");
-        headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        Label headerLabel = new Label("Nexor Shop");
+        headerLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, 24));
         gridPane.add(headerLabel, 0,0,2,1);
         GridPane.setHalignment(headerLabel, HPos.CENTER);
         GridPane.setMargin(headerLabel, new Insets(20, 0,20,0));
 
-        Label nameLabel1 = new Label("Processor ");
+        Label nameLabel1 = new Label("Kategori Barang ");
         gridPane.add(nameLabel1, 0,1);
 
         TextField nameField1 = new TextField();
         nameField1.setPrefHeight(40);
         gridPane.add(nameField1, 1,1);
         
-        Label nameLabel2 = new Label("Motherboard ");
+        Label nameLabel2 = new Label("Nama Barang ");
         gridPane.add(nameLabel2, 0,2);
         
         TextField nameField2 = new TextField();
         nameField2.setPrefHeight(40);
         gridPane.add(nameField2, 1,2);
 
-        Label emailLabel = new Label("RAM ");
+        Label emailLabel = new Label("Jumlah Barang ");
         gridPane.add(emailLabel, 0, 3);
 
         TextField emailField = new TextField();
         emailField.setPrefHeight(40);
         gridPane.add(emailField, 1, 3);
         
-        Label noLabel = new Label("VGA ");
+        Label noLabel = new Label("Harga Barang ");
         gridPane.add(noLabel, 0, 4);
         
         TextField noField = new TextField();
         noField.setPrefHeight(40);
         gridPane.add(noField, 1, 4);
 
-        Label passwordLabel = new Label("Hard disk ");
+        Label passwordLabel = new Label("Metode Pembayaran ");
         gridPane.add(passwordLabel, 0, 5);
-
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPrefHeight(40);
-        gridPane.add(passwordField, 1, 5);
         
-        Label confirmLabel = new Label("Casing ");
+        TextField HDD = new TextField();
+        noField.setPrefHeight(40);
+        gridPane.add(HDD, 1, 4);
+
+//        PasswordField passwordField = new PasswordField();
+//        passwordField.setPrefHeight(40);
+//        gridPane.add(passwordField, 1, 5);
+        
+        Label confirmLabel = new Label("Alamat Pembeli ");
         gridPane.add(confirmLabel, 0, 6);
         
         PasswordField confirmField = new PasswordField();
@@ -136,7 +141,7 @@ import javafx.stage.Window;
                     showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter your VGA");
                     return;
                 }
-                if(passwordField.getText().isEmpty()) {
+                if(HDD.getText().isEmpty()) {
                     showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter a hard disk");
                     return;
                 }
@@ -161,7 +166,7 @@ import javafx.stage.Window;
     }
     
      public static void main(String[] args) {
-         RegistrationFormApplication myObj = new RegistrationFormApplication();
+         UAP myObj = new UAP();
     myObj.name = "Program Sedang Berjalan...";
     System.out.println(myObj.name);
         launch(args);
