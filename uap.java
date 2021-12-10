@@ -1,6 +1,7 @@
-package javafxapplication3;
+package uap;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -15,22 +16,20 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
- public class olshop extends Application {
+ public class UAP extends Application {
      String name;
-     
      public String getName() {
-    return name;  
+    return name;
   }
-     
+  // Setter
   public void setName(String newName) {
     this.name = newName;
   }
   
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("");
-
-        GridPane gridPane = createolshopPane();
+        primaryStage.setTitle("Registration Form JavaFX Application");
+        GridPane gridPane = createRegistrationFormPane();
         addUIControls(gridPane);
         Scene scene = new Scene(gridPane, 800, 500);	
         primaryStage.setScene(scene);
@@ -39,7 +38,7 @@ import javafx.stage.Window;
     }
 
 
-    private GridPane createolshopPane() {
+    private GridPane createRegistrationFormPane() {
         GridPane gridPane = new GridPane();
 
         gridPane.setAlignment(Pos.CENTER);
@@ -63,7 +62,7 @@ import javafx.stage.Window;
 
     private void addUIControls(GridPane gridPane) {
         Label headerLabel = new Label("Nexor Shop");
-        headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        headerLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, 24));
         gridPane.add(headerLabel, 0,0,2,1);
         GridPane.setHalignment(headerLabel, HPos.CENTER);
         GridPane.setMargin(headerLabel, new Insets(20, 0,20,0));
@@ -82,33 +81,38 @@ import javafx.stage.Window;
         nameField2.setPrefHeight(40);
         gridPane.add(nameField2, 1,2);
 
-        Label nameLabel3 = new Label("Jumlah Barang ");
-        gridPane.add(nameLabel3, 0, 3);
+        Label emailLabel = new Label("Jumlah Barang ");
+        gridPane.add(emailLabel, 0, 3);
 
-        TextField nameField3 = new TextField();
-        nameField3.setPrefHeight(40);
-        gridPane.add(nameField3, 1, 3);
+        TextField emailField = new TextField();
+        emailField.setPrefHeight(40);
+        gridPane.add(emailField, 1, 3);
         
-        Label nameLabel4 = new Label("Harga Barang ");
-        gridPane.add(nameLabel4, 0, 4);
+        Label noLabel = new Label("Harga Barang ");
+        gridPane.add(noLabel, 0, 4);
         
-        TextField nameField4 = new TextField();
-        nameField4.setPrefHeight(40);
-        gridPane.add(nameField4, 1, 4);
+        TextField noField = new TextField();
+        noField.setPrefHeight(40);
+        gridPane.add(noField, 1, 4);
 
-        Label nameLabel5 = new Label("Payment Method ");
-        gridPane.add(nameLabel5, 0, 5);
+        Label passwordLabel = new Label("Payment Method ");
+        gridPane.add(passwordLabel, 0, 5);
+        
+        
+        TextField HDD = new TextField();
+        HDD.setPrefHeight(40);
+        gridPane.add(HDD, 1, 5);
 
-        TextField nameField5 = new TextField();
-        nameField5.setPrefHeight(40);
-        gridPane.add(nameField5, 1, 5);
+//        PasswordField passwordField = new PasswordField();
+//        passwordField.setPrefHeight(40);
+//        gridPane.add(passwordField, 1, 5);
         
-        Label nameLabel6 = new Label("Alamat Pembeli ");
-        gridPane.add(nameLabel6, 0, 6);
+        Label confirmLabel = new Label("Alamat Pembeli ");
+        gridPane.add(confirmLabel, 0, 6);
         
-        TextField nameField6 = new TextField();
-        nameField6.setPrefHeight(40);
-        gridPane.add(nameField6, 1, 6);
+        TextField alamat = new TextField();
+        alamat.setPrefHeight(40);
+        gridPane.add(alamat, 1, 6);
 
         Button submitButton = new Button("Beli");
         submitButton.setPrefHeight(40);
@@ -122,27 +126,27 @@ import javafx.stage.Window;
             @Override
             public void handle(ActionEvent event) {
                 if(nameField1.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan kategori");
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukan Kategori barang");
                     return;
                 }
                 if(nameField2.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan nama barang");
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukan nama barang");
                     return;
                 }
-                if(nameField3.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan jumlah barang");
+                if(emailField.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukan jumlah barang");
                     return;
                 }
-                if(nameField4.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan harga barang");
+                if(noField.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukan harga barang");
                     return;
                 }
-                if(nameField5.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan payment method");
+                if(HDD.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukan metode pembayaran");
                     return;
                 }
-                if(nameField6.getText().isEmpty()) {
-                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukkan alamat");
+                if(alamat.getText().isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Masukan alamat anda");
                     return;
                 }
                 showAlert(Alert.AlertType.CONFIRMATION, gridPane.getScene().getWindow(), "", "Apakah anda yakin?");
@@ -162,9 +166,13 @@ import javafx.stage.Window;
     }
     
      public static void main(String[] args) {
-         olshop myObj = new olshop();
-    myObj.name = "Program Sedang Berjalan...";
-    System.out.println(myObj.name);
+         UAP myObj = new UAP();
+        myObj.name = "Program Sedang Berjalan...";
+        System.out.println(myObj.name);
+        Product a = new Product();
+        a.setMerk(" ");
+        a.getMerk();
+        a.merkBarang();
         launch(args);
 }
 }
